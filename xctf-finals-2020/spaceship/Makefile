@@ -1,3 +1,5 @@
+# ELVM is needed to compile this.
+# https://github.com/umutoztunc/elvm
 ELC := $(ELVM)/out/elc
 CC := $(ELVM)/out/8cc
 CFLAGS := -S -I$(ELVM)/libc
