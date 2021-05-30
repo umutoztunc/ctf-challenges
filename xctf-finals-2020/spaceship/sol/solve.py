@@ -1,4 +1,5 @@
 import z3
+
 from whitesymex import parser
 from whitesymex.path_group import PathGroup
 from whitesymex.state import State
