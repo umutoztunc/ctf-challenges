@@ -1,6 +1,5 @@
 import z3
-
-from whitesymex import parser, strategies
+from whitesymex import parser
 from whitesymex.path_group import PathGroup
 from whitesymex.state import State
 
@@ -11,7 +10,7 @@ state = State.create_entry_state(instructions, stdin=stdin)
 
 # The flag is printable.
 for c in symflag:
-    state.solver.add(z3.And(0x20 <= c, c <= 0x7f))
+    state.solver.add(z3.And(0x20 <= c, c <= 0x7F))
 
 path_group = PathGroup(state)
 path_group.explore(find=b"crewmember", avoid=b"Imposter!")
