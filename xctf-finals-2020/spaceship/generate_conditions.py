@@ -2,7 +2,6 @@
 from dataclasses import dataclass, field
 from typing import List, Tuple
 import random
-import secrets
 import sys
 
 from Crypto.Util.number import getPrime
@@ -10,7 +9,7 @@ from Crypto.Util.number import getPrime
 
 @dataclass
 class Equation:
-    lhs: Tuple[int] = field(default_factory=list)
+    lhs: List[Tuple[int, int]] = field(default_factory=list)
     rhs: int = 0
 
 
@@ -29,12 +28,12 @@ def random_equations(values, indexes, modulus) -> List[Equation]:
             eq.lhs.append((coeff, index))
             eq.rhs += coeff * values[index]
 
-        eq.rhs %= modulus 
+        eq.rhs %= modulus
         equations.append(eq)
     return equations
 
 
-def generate_equations(values, group_size) -> List[Equation]:
+def generate_equations(values, group_size) -> Tuple[List[Equation], int]:
     modulus = getPrime(12)
     indexes = list(range(len(values)))
     random.shuffle(indexes)
